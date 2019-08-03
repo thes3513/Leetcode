@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        if(s.length() == 0) return true; 
+        // empty string is a valid string.
+        map<char,char> parentheses = {{'(', ')'}, {'{', '}'},{'[',']'}};
+        // Store the opening and closing bracket mapping.
+        stack<char> a;
+        a.push(s[0]);
+        // push first char.
+        for(int i=1;i<s.length();i++)
+        {
+            // if its closing bracket, match it with top of stack.
+            if(!a.empty() && s[i] == parentheses[a.top()])  
+                a.pop();
+            // if stack is empty or not match, push to stack.
+            else
+                a.push(s[i]);
+        }
+    // if end of loop, stack isn't empty, then false.
+    return a.empty();
+    }
+};
