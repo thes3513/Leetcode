@@ -1,0 +1,42 @@
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        if(needle=="")  return 0;
+        if(needle.length()>haystack.length())   return -1;
+        int pos;
+        pos=haystack.find(needle);
+        return pos;
+    }
+};
+
+
+
+
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        if(needle=="")  return 0;
+        if(needle.length()>haystack.length())   return -1;
+        int pos = -1;
+        for(int i=0;i<haystack.length()-needle.length()+1;i++)
+        {
+            if(haystack[i]==needle[0])
+            {
+                int k=1;
+                for(;k<needle.length();k++)
+                {
+                    if(haystack[i+k]==needle[k])
+                        continue;
+                    else
+                        break;
+                }
+                if(k==needle.length())
+                {
+                    pos = i;
+                    break;
+                }
+            }
+        }
+    return pos;
+    }
+};
