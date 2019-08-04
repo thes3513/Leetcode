@@ -1,0 +1,17 @@
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        size_t m = max(a.size(), b.size());
+	    a = string(m - a.size(), '0') + a;
+	    b = string(m - b.size(), '0') + b;
+	    int c = 0;
+	    for (int i=m-1; i>=0; i--)
+	    {
+		    c += (a[i] - '0') + (b[i] - '0');
+		    a[i] = c%2 + '0';
+		    c = c / 2;
+	    }
+	    if (c > 0) a = '1' + a;
+	return a;
+    }
+};
